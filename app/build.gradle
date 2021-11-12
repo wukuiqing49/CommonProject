@@ -1,0 +1,94 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
+static def stringValue(def value) {
+    return "\"${value}\""
+}
+
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+    useLibrary 'org.apache.http.legacy'
+    defaultConfig {
+        applicationId "com.wu.common"
+        minSdkVersion 19
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file("../shop.keystore")
+            storePassword 'wukuiqing'
+            keyAlias 'shop'
+            keyPassword 'wukuiqing'
+        }
+        release {
+            storeFile file("../shop.keystore")
+            storePassword 'wukuiqing'
+            keyAlias 'shop'
+            keyPassword 'wukuiqing'
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+            zipAlignEnabled true
+            debuggable = true
+            buildConfigField "String", "APP_WECHAT_KEY", stringValue("wx61ac9619cdafdbd8")
+
+        }
+        release {
+            signingConfig signingConfigs.release
+            zipAlignEnabled true
+            debuggable = false
+            buildConfigField "String", "APP_WECHAT_KEY", stringValue("wx61ac9619cdafdbd8")
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "Shop-${variant.versionName}-${variant.name}.apk"
+        }
+    }
+
+    repositories {
+        flatDir {
+            dirs "lib"
+        }
+    }
+
+    buildFeatures {
+        dataBinding = true
+    }
+
+    dexOptions {
+        javaMaxHeapSize '4g'
+    }
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.2.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation "androidx.multidex:multidex:2.0.0"
+    implementation project(path: ':lib_third')
+}

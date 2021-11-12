@@ -1,0 +1,3 @@
+include ':lib_third'
+include ':app'
+rootProject.name = "CommonProject"
