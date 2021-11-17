@@ -12,5 +12,8 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.bt_qq).setOnClickListener {
             startActivity(Intent(this, QQThirdActivity::class.java))
         }
+        findViewById<Button>(R.id.bt_wechat).setOnClickListener {
+            startActivity(Intent(this, WechatThirdActivity::class.java))
+        }
     }
 }

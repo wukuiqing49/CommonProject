@@ -41,14 +41,12 @@ android {
             signingConfig signingConfigs.debug
             zipAlignEnabled true
             debuggable = true
-            buildConfigField "String", "APP_WECHAT_KEY", stringValue("wx61ac9619cdafdbd8")
 
         }
         release {
             signingConfig signingConfigs.release
             zipAlignEnabled true
             debuggable = false
-            buildConfigField "String", "APP_WECHAT_KEY", stringValue("wx61ac9619cdafdbd8")
         }
     }
 

@@ -2,7 +2,9 @@ plugins {
     id 'com.android.library'
     id 'kotlin-android'
 }
-
+static def stringValue(def value) {
+    return "\"${value}\""
+}
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
@@ -16,6 +18,12 @@ android {
     }
 
     buildTypes {
+
+        debug {
+            minifyEnabled false
+            //微信Key wx61ac9619cdafdbd8 wx123xxxx
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -41,6 +49,15 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.2.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'com.google.android.material:material:1.1.0'
+//    implementation 'com.github.wukuiqing49:Util:v1.0.3'
     //qq三方库
     implementation 'com.tencent.tauth:qqopensdk:3.52.0'
+    //微信三方库
+    //微信包
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+    implementation ("com.squareup.okhttp3:okhttp:3.12.6"){
+        force = true //API 19 support
+    }
+    implementation "com.squareup.okhttp3:logging-interceptor:3.12.6"
+    implementation 'com.google.code.gson:gson:2.8.6'
 }

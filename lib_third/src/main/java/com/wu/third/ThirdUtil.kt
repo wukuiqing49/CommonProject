@@ -1,16 +1,27 @@
 package com.wu.third
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.util.Log
 import com.tencent.connect.UnionInfo
 import com.tencent.connect.UserInfo
 import com.tencent.connect.common.Constants
 import com.tencent.connect.share.QQShare
+import com.tencent.mm.opensdk.modelmsg.*
+import com.tencent.mm.opensdk.modelpay.PayReq
+import com.tencent.mm.opensdk.openapi.WXAPIFactory
 import com.tencent.open.SocialConstants
 import com.tencent.tauth.IUiListener
 import com.tencent.tauth.Tencent
 import com.tencent.tauth.UiError
+import com.wu.third.wxapi.WeChatInfo
+import com.wu.third.wxapi.WechatLoginObservable
+import com.wu.third.wxapi.util.Constant
+import com.wu.third.wxapi.util.Constant.APP_WECHAT_KEY
+import com.wu.third.wxapi.util.Constant.APP_WECHAT_SERECT
+import com.wu.third.wxapi.util.OkHttpUtils
+import org.json.JSONException
 import org.json.JSONObject
 
 
@@ -193,5 +204,165 @@ object ThirdUtil {
         })
     }
 
+    /**
+     * 判断是否安装了微信客户端
+     */
+    fun isWXAppInstalledAndSupported(context: Context?): Boolean {
+        val api = WXAPIFactory.createWXAPI(context, APP_WECHAT_KEY)
+        return api.isWXAppInstalled
+    }
 
+    //登录微信
+    fun loginWechat(mContext: Context) {
+        if (isWXAppInstalledAndSupported(mContext)) {
+            Thread {
+                val req = SendAuth.Req()
+                req.scope = "snsapi_userinfo"
+                req.state = ""
+                val iwxapi = WXAPIFactory.createWXAPI(mContext, APP_WECHAT_KEY, true)
+                iwxapi.registerApp(APP_WECHAT_KEY)
+                iwxapi.sendReq(req)
+            }.start()
+        } else {
+        }
+    }
+
+
+    var access: String? = null
+
+
+    //获取用户token
+    fun getAccessToken(code: String) {
+        val getTokenUrl = String.format(
+            "https://api.weixin.qq.com/sns/oauth2/access_token?" +
+                    "appid=%s&secret=%s&code=%s&grant_type=authorization_code", APP_WECHAT_KEY,
+            APP_WECHAT_SERECT, code
+        )
+        val resultCallback: OkHttpUtils.ResultCallback<String> =
+            object : OkHttpUtils.ResultCallback<String>() {
+                override fun onSuccess(response: String) {
+                    var openId: String? = null
+                    try {
+                        val jsonObject = JSONObject(response)
+                        access = jsonObject.getString("access_token")
+                        openId = jsonObject.getString("openid")
+                    } catch (e: JSONException) {
+                        e.printStackTrace()
+                    }
+                    getWechatUserInfo(openId)
+                }
+
+                override fun onFailure(e: java.lang.Exception) {
+                    // todo 异常处理
+                }
+            }
+        OkHttpUtils.get(getTokenUrl, resultCallback)
+    }
+
+    //获取微信用户信息
+    private fun getWechatUserInfo(openId: String?) {
+
+        //获取个人信息
+        val getUserInfo =
+            "https://api.weixin.qq.com/sns/userinfo?access_token=$access&openid=$openId"
+        val resultCallback: OkHttpUtils.ResultCallback<WeChatInfo> =
+            object : OkHttpUtils.ResultCallback<WeChatInfo>() {
+                override fun onSuccess(response: WeChatInfo) {
+                    response.errCode = response.errCode
+                    response.accessToken = access
+                    //获取到微信用户信息
+                    if (response != null) WechatLoginObservable.getInstance().update(response)
+                }
+
+                override fun onFailure(e: java.lang.Exception) {
+                    // todo 异常处理
+                }
+            }
+        OkHttpUtils.get(getUserInfo, resultCallback)
+    }
+
+    //微信分享
+    fun shareWechat(
+        mContext: Context,
+        url: String,
+        title: String,
+        desc: String,
+        thumbBmp: Bitmap?
+    ) {
+        var webpage = WXWebpageObject()
+        val api = WXAPIFactory.createWXAPI(mContext, Constant.APP_WECHAT_KEY)
+        //长度小于 10240
+        webpage.webpageUrl = url
+        //分享的内容
+        var msg = WXMediaMessage(webpage)
+        //长度限制 512
+        msg.title = title
+        //长度限制 1024
+        msg.description = desc
+        //byty[] 限制 65536 预览图
+        msg.setThumbImage(thumbBmp)
+        val req = SendMessageToWX.Req()
+        req.message = msg
+        //分享类型
+        req.scene = SendMessageToWX.Req.WXSceneSession
+        api.sendReq(req) //发送到微信
+    }
+
+    fun shareWechatImg(mContext: Context, bmp: Bitmap?) {
+
+        val api = WXAPIFactory.createWXAPI(mContext, Constant.APP_WECHAT_KEY)
+        //初始化 WXImageObject 和 WXMediaMessage 对象
+        val imgObj = WXImageObject(bmp)
+        val msg = WXMediaMessage()
+
+        msg.mediaObject = imgObj
+        val thumbBmp = Bitmap.createScaledBitmap(bmp!!, 120, 120, true)
+        bmp.recycle()
+        // 限制 65536 预览图
+        msg.thumbData = Util.bmpToByteArray(thumbBmp, true)
+
+
+        //构造一个Req
+
+        //构造一个Req
+        val req = SendMessageToWX.Req()
+        req.transaction = buildTransaction("img")
+        req.message = msg
+        req.scene = SendMessageToWX.Req.WXSceneSession
+
+        //调用api接口，发送数据到微信
+        api.sendReq(req)
+    }
+
+    fun buildTransaction(type: String?): String? {
+        return if (type == null) System.currentTimeMillis()
+            .toString() else type + System.currentTimeMillis()
+    }
+
+    //微信支付 数据需要后台生成预订单的时候返回支付的数据(放后台做前端不做)
+    fun payWechat(
+        mContext: Context,
+        appId: String,
+        partnerId: String,
+        prepayId: String,
+        nonceStr: String,
+        timeStamp: String,
+        packageValue: String,
+        sign: String,
+        extData: String
+    ) {
+        var api = WXAPIFactory.createWXAPI(mContext, Constant.APP_WECHAT_KEY);
+        api.registerApp(Constant.APP_WECHAT_KEY)
+
+        var req = PayReq()
+        req.appId = appId
+        req.partnerId = partnerId
+        req.prepayId = prepayId
+        req.nonceStr = nonceStr
+        req.timeStamp = timeStamp
+        req.packageValue = "Sign=WXPay"
+        req.sign = sign
+        req.extData = extData
+        api.sendReq(req)
+    }
 }
