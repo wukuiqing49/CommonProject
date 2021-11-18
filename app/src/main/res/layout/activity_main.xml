@@ -29,6 +29,15 @@
         android:layout_height="wrap_content"
         android:text="微信三方处理"
         tools:ignore="MissingConstraints" />
+    <Button
+        android:id="@+id/bt_classification"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="分类"
+        tools:ignore="MissingConstraints" />
 
 </LinearLayout>
 </layout>

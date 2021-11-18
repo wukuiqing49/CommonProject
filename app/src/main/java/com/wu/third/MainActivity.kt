@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import com.wu.third.classification.ClassificationActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,6 +15,9 @@ class MainActivity : AppCompatActivity() {
         }
         findViewById<Button>(R.id.bt_wechat).setOnClickListener {
             startActivity(Intent(this, WechatThirdActivity::class.java))
+        }
+        findViewById<Button>(R.id.bt_classification).setOnClickListener {
+            startActivity(Intent(this, ClassificationActivity::class.java))
         }
     }
 }
