@@ -17,7 +17,7 @@ import com.wu.third.databinding.ItemClassificationContentBinding
  *
  * @date 2021年11月18日 15:03
  *
- *@des
+ *@des  右侧内容的Adapter
  *
  */
 
@@ -33,16 +33,22 @@ class ClassificationContentAdapter(mContext: Context) :
         holder.binding = binding
         return holder
     }
-
+    var binding:ItemClassificationContentBinding?=null
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         var bindingHolder = holder as KtDataBindingViewHolder
-        var binding = bindingHolder.binding as ItemClassificationContentBinding
-        binding.tvTitle.text = getItem(position)!!.title
-        binding.rvImgs.layoutManager = GridLayoutManager(mContext, 4)
+         binding = bindingHolder.binding as ItemClassificationContentBinding
+        binding!!.tvTitle.text = getItem(position)!!.title
+        binding!!.rvImgs.layoutManager = GridLayoutManager(mContext, 4)
         var adapter = ClassificationImgsAdapter(mContext)
-        binding.rvImgs.adapter = adapter
+        binding!!.rvImgs.adapter = adapter
         adapter.addItems(getItem(position)!!.imgs)
+    }
 
+    fun setNewData(newDatas:ArrayList<ClassificationContentInfo>){
+        removeAllItems()
+        itemList=newDatas
+        notifyDataSetChanged()
+        binding!!.rvImgs.scrollToPosition(0)
     }
 
 

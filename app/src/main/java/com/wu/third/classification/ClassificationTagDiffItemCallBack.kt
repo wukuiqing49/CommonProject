@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.DiffUtil
 
 class ClassificationTagDiffItemCallBack() :
     DiffUtil.ItemCallback<ClassificationTagInfo>() {
+
     //是否相同的id
     override fun areItemsTheSame(oldItem: ClassificationTagInfo, newItem: ClassificationTagInfo): Boolean {
         return oldItem.title!!.equals(oldItem.title)

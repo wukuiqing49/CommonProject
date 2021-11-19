@@ -8,14 +8,16 @@ import java.util.*
  *
  * @date 2021年11月18日 16:25
  *
- *@des
+ *@des  刷新完成的 观察者  type 为预留的各种状态
  *
  */
 
-object ClassificationObservable:Observable (){
+object ClassificationObservable : Observable() {
 
-    fun update(info
-               :ClassificationObservableInfo){
+    fun update(
+        info
+        : ClassificationObservableInfo
+    ) {
         setChanged()
         notifyObservers(info)
     }
