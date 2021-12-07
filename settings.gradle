@@ -1,3 +1,2 @@
-include ':lib_third'
-include ':app'
+include ':app', ':lib_network',':lib_third'
 rootProject.name = "CommonProject"

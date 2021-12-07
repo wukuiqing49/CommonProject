@@ -9,15 +9,15 @@ static def stringValue(def value) {
 
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
     useLibrary 'org.apache.http.legacy'
     defaultConfig {
         applicationId "com.wu.common"
-        minSdkVersion 19
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
         multiDexEnabled true
     }
 
@@ -50,6 +50,17 @@ android {
         }
     }
 
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "Common-${variant.versionName}-${variant.name}.apk"
+        }
+    }
+
+    repositories {
+        flatDir {
+            dirs "lib"
+        }
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -59,25 +70,10 @@ android {
         jvmTarget = '1.8'
     }
 
-    android.applicationVariants.all { variant ->
-        variant.outputs.all {
-            outputFileName = "Shop-${variant.versionName}-${variant.name}.apk"
-        }
-    }
-
-    repositories {
-        flatDir {
-            dirs "lib"
-        }
-    }
-
     buildFeatures {
         dataBinding = true
     }
 
-    dexOptions {
-        javaMaxHeapSize '4g'
-    }
 }
 
 dependencies {
@@ -93,4 +89,5 @@ dependencies {
     api 'com.github.bumptech.glide:glide:4.11.0'
     api "com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-6"
     api "com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-6"
+    implementation project(path: ':lib_network')
 }

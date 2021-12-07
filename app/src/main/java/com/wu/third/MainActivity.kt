@@ -3,7 +3,13 @@ package com.wu.third
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
+import com.wu.network.api.MallApi
+import com.wu.network.listener.DataCallback
+import com.wu.network.model.UserInfo
+import com.wu.network.retrofit.NetWork
+import com.wu.network.retrofit.convertExecute
 import com.wu.third.classification.ClassificationActivity
 
 class MainActivity : AppCompatActivity() {
@@ -19,5 +25,24 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.bt_classification).setOnClickListener {
             startActivity(Intent(this, ClassificationActivity::class.java))
         }
+        findViewById<Button>(R.id.bt_net).setOnClickListener {
+            net()
+        }
+    }
+
+    fun net(){
+        var map = HashMap<String, String>()
+        map.put("name", "123")
+        map.put("password", "456")
+        NetWork.create(MallApi::class.java)
+            .post(map)
+            .convertExecute(object : DataCallback<UserInfo>() {
+                override fun onSuccess(bean: UserInfo) {
+                }
+
+                override fun onFailed(status: Int, message: String) {
+                }
+
+            })
     }
 }
