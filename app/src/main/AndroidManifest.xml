@@ -37,6 +37,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".classification.ClassificationActivity"/>
+        <activity android:name=".net.NetActivity"/>
     </application>
 
 </manifest>

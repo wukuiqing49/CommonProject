@@ -11,6 +11,7 @@ import com.wu.network.model.UserInfo
 import com.wu.network.retrofit.NetWork
 import com.wu.network.retrofit.convertExecute
 import com.wu.third.classification.ClassificationActivity
+import com.wu.third.net.NetActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +27,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, ClassificationActivity::class.java))
         }
         findViewById<Button>(R.id.bt_net).setOnClickListener {
-            net()
+            startActivity(Intent(this, NetActivity::class.java))
         }
     }
 
