@@ -38,6 +38,7 @@
         </activity>
         <activity android:name=".classification.ClassificationActivity"/>
         <activity android:name=".net.NetActivity"/>
+        <activity android:name=".textview.TextViewActivity"/>
     </application>
 
 </manifest>

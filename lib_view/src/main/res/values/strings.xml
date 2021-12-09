@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">lib_emoj</string>
+
+    <string name="call">呼叫</string>
+    <string name="copy">复制</string>
+    <string name="add_phone_list">添加到手机通讯录</string>
+    <string name="add_remarks">添加到备注信息</string>
+
+    <string name="create_new_contact">创建新的联系人</string>
+    <string name="add_exist_contact">添加到现有联系人</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_gif">表情管理</string>
+    <string name="recommend_emoji">推荐表情</string>
+    <string name="permission_write_storage_checker">应用程序需要获取存储权限，否则无法正常使用存储功能</string>
+</resources>

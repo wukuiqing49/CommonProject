@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AutoLinkTextView">
+        <attr name="linkBackgroundColor" format="color" />
+        <attr name="linkTextColor" format="color" />
+        <attr name="highLightColor" format="color" />
+        <attr name="AutoLinkMaskCompat">
+            <flag name="webUrl" value="1" />
+            <flag name="emailAddress" value="2" />
+            <flag name="phoneNumber" value="4" />
+            <flag name="mapAddress" value="8" />
+            <flag name="all" value="0" />
+            <flag name="none" value="-1" />
+        </attr>
+        <attr name="useLongClick" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="ExpandableTextView">
+        <attr name="maxCollapsedLength" format="integer" />
+        <attr name="new_expandHint" format="string" />
+        <attr name="new_collapseHint" format="string" />
+        <attr name="new_hintColor" format="color" />
+    </declare-styleable>
+</resources>

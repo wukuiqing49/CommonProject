@@ -90,4 +90,5 @@ dependencies {
     api "com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-6"
     api "com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-6"
     api project(path: ':lib_network')
+    implementation project(path: ':lib_view')
 }

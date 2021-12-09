@@ -44,7 +44,7 @@ class NetActivity : AppCompatActivity() {
 
     private fun getPostData() {
         var map = HashMap<String, String>()
-        map.put("name", "123")
+        map.put("name", "123444")
         map.put("password", "456")
         NetWork.create(MallApi::class.java)
             .login(map)
@@ -62,7 +62,7 @@ class NetActivity : AppCompatActivity() {
 
     private fun getData() {
         var map = HashMap<String, String>()
-        map.put("name", "123")
+        map.put("name", "123444")
         map.put("age", "456")
         NetWork.create(MallApi::class.java)
             .get(map)

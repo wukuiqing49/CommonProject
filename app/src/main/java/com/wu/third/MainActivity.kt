@@ -12,6 +12,7 @@ import com.wu.network.retrofit.NetWork
 import com.wu.network.retrofit.convertExecute
 import com.wu.third.classification.ClassificationActivity
 import com.wu.third.net.NetActivity
+import com.wu.third.textview.TextViewActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +29,9 @@ class MainActivity : AppCompatActivity() {
         }
         findViewById<Button>(R.id.bt_net).setOnClickListener {
             startActivity(Intent(this, NetActivity::class.java))
+        }
+        findViewById<Button>(R.id.bt_text).setOnClickListener {
+            startActivity(Intent(this, TextViewActivity::class.java))
         }
     }
 
