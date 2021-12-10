@@ -19,7 +19,7 @@ object ParameterUtil {
             params["timestamp"] = (time / 1000).toString()
         }
         if ( !params.containsKey("ver")) {
-            params["ver"] = BuildConfig.VERSION_NAME
+//            params["ver"] = BuildConfig.VERSION_NAME
         }
         return params
     }

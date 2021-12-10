@@ -9,54 +9,88 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
+    <RelativeLayout
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_10dp"
+        android:layout_margin="20dp">
+        <EditText
+            android:layout_centerInParent="true"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:id="@+id/userName"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textColor="@color/color_333"
+            android:textColorHint="@color/color_999"
 
-    <Button
-        android:id="@+id/bt_qq"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="QQ三方处理"
-        tools:ignore="MissingConstraints" />
+            android:background="@null"
+            android:hint="请输入数据"
+            android:cursorVisible="true"
+            android:textCursorDrawable="@drawable/edit_cursor_defult"
+            android:textSize="14dp" />
+    </RelativeLayout>
 
-    <Button
-        android:id="@+id/bt_wechat"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="微信三方处理"
-        tools:ignore="MissingConstraints" />
-    <Button
-        android:id="@+id/bt_classification"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="分类"
-        tools:ignore="MissingConstraints" />
-    <Button
-        android:id="@+id/bt_net"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="网络请求"
-        tools:ignore="MissingConstraints" />
 
-    <Button
-        android:id="@+id/bt_text"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
+
+
+    <LinearLayout
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:ignore="MissingConstraints" />
+        android:orientation="vertical">
+
+
+
+        <Button
+            android:id="@+id/bt_qq"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="QQ三方处理"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/bt_wechat"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="微信三方处理"
+            tools:ignore="MissingConstraints" />
+        <Button
+            android:id="@+id/bt_classification"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="分类"
+            tools:ignore="MissingConstraints" />
+        <Button
+            android:id="@+id/bt_net"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="网络请求"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/bt_text"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            tools:ignore="MissingConstraints" />
+    </LinearLayout>
 
 </LinearLayout>
 </layout>
