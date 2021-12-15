@@ -18,7 +18,7 @@ implementation 'com.github.wukuiqing49:CommonProject:v1.0.4'
 #### 使用
 
 ##### 1.展示邮箱,手机号,网址
-` ` `
+` ` `java
  <com.wu.view.AutoLinkTextView 
    android:layout_marginRight="20dp"  
    android:layout_marginLeft="20dp"  
