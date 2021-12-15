@@ -13,16 +13,18 @@ implementation 'com.github.wukuiqing49:CommonProject:v1.0.4'
 #### 使用
 
 ##### 1.展示邮箱,手机号,网址
+
  ` ` `
- <com.wu.view.AutoLinkTextView
-  android:layout_marginRight="20dp"
-  android:layout_marginLeft="20dp"
-  android:layout_width="match_parent"
-  android:layout_height="wrap_content"
-  app:useLongClick="true"/>
-   
+ <com.wu.view.AutoLinkTextView  
+  android:layout_marginRight="20dp"  
+  android:layout_marginLeft="20dp"  
+  android:layout_width="match_parent"  
+  android:layout_height="wrap_content"  
+  app:useLongClick="true"/>   
+ ` ` `    
+
  
-` ` `    
+
 
 
 
