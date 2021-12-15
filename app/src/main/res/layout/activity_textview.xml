@@ -47,18 +47,9 @@
         app:maxCollapsedLength="80"
         app:new_collapseHint="收起"
         app:new_expandHint="全文"
+        app:new_hintColor="@color/color_m_red"
         android:layout_height="wrap_content"
         android:text="18538537389 区分Activity的加载模式，通过示例一目了然。这里编写了一个Activity A（ActA）和Activity B（ActB）循环跳转的例子。对加载模式修改和代码做稍微改动，就可以说明四种模式的区别"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/bt_create"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="创建TextView"
         tools:ignore="MissingConstraints" />
 
 </LinearLayout>

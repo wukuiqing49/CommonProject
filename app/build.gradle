@@ -91,5 +91,5 @@ dependencies {
     api "com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-6"
     api project(path: ':lib_network')
     implementation project(path: ':lib_view')
-//    implementation 'com.github.wukuiqing49:CommonProject:v1.0.3'
+    implementation 'com.github.wukuiqing49:CommonProject:v1.0.4'
 }

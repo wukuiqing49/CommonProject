@@ -21,26 +21,6 @@ class TextViewActivity : AppCompatActivity() {
     var binding:ActivityTextviewBinding?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = DataBindingUtil.setContentView<ActivityTextviewBinding>(this, R.layout.activity_textview)
-        initView()
-
     }
-
-    private fun initView() {
-//        binding!!.tv1.setNeedForceEventToParent(true)
-//        binding!!.tv1.setOnAutoLinkLongClickListener()
-        binding!!.btCreate.setOnClickListener {
-            getData()
-        }
-    }
-
-
-    private fun getData() {
-       var textView= AutoLinkTextView(this)
-
-
-    }
-
-
 }
