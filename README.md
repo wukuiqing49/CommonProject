@@ -10,6 +10,11 @@ implementation 'com.github.wukuiqing49:CommonProject:v1.0.4'
 <img src="imgs/open.jpg" width="32%">
 </p>
 
+#### 功能
+
+* AutoLinkTextView 高亮展示邮箱,手机号,网址
+* ExpandableTextView 可扩展的TextView
+
 #### 使用
 
 ##### 1.展示邮箱,手机号,网址
@@ -21,6 +26,8 @@ implementation 'com.github.wukuiqing49:CommonProject:v1.0.4'
    android:layout_height="wrap_content"  
    app:useLongClick="true"/>   
  ` ` `
+ 
+ 
 
  
 
