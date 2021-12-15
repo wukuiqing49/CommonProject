@@ -11,8 +11,8 @@ implementation 'com.github.wukuiqing49:CommonProject:v1.0.4'
 
 #### 效果
 <p>
-<img src="imgs/defult.jpg" width="66%">
-<img src="imgs/open.jpg" width="66%">
+<img src="imgs/defult.jpg" width="50%">
+<img src="imgs/open.jpg" width="50%">
 </p>
 
 #### 功能
