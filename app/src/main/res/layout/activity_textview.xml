@@ -9,6 +9,25 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
+    <com.wu.view.AutoLinkTextView
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:useLongClick="true"
+        android:text="https://www.baidu.com 我的测试数据"
+        tools:ignore="MissingConstraints" />
+
+    <com.wu.view.AutoLinkTextView
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:useLongClick="true"
+        android:text="296606241@qq.com 我的测试数据"
+        tools:ignore="MissingConstraints" />
 
     <com.wu.view.AutoLinkTextView
         android:id="@+id/tv_1"

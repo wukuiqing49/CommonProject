@@ -10,6 +10,7 @@ import android.text.TextUtils
 import android.util.Log
 import android.widget.Toast
 import com.wu.view.R
+import java.lang.Exception
 import java.util.ArrayList
 
 object AutoTextViewUtil {
@@ -18,17 +19,34 @@ object AutoTextViewUtil {
 
     //打开浏览器
     fun openBrowser(context: Context?, url: String?) {
-        val intent = Intent()
-        intent.action = Intent.ACTION_VIEW
-        intent.data = Uri.parse(url)
-        // 注意此处的判断intent.resolveActivity()可以返回显示该Intent的Activity对应的组件名
-        // 官方解释 : Name of the component implementing an activity that can display the intent
-        if (intent.resolveActivity(context!!.getPackageManager()) != null) {
-            val componentName = intent.resolveActivity(context!!.getPackageManager())
-            context!!.startActivity(Intent.createChooser(intent, "外部文件"))
-        } else {
+
+        try {
+            val intent = Intent()
+            intent.action = Intent.ACTION_VIEW
+            intent.data = Uri.parse(url)
+            if (intent.resolveActivity(context!!.getPackageManager()) != null) {
+                val componentName = intent.resolveActivity(context!!.getPackageManager())
+                context!!.startActivity(Intent.createChooser(intent, "外部文件"))
+            } else {
+                Log.e("err", "链接错误或无浏览器")
+            }
+        }catch (e :Exception){
             Log.e("err", "链接错误或无浏览器")
         }
+
+    }
+    //打开浏览器
+    fun openEmail(context: Context?, url: String?) {
+        try {
+            var intent =  Intent(Intent.ACTION_SENDTO,Uri.parse(url))
+            intent.putExtra(Intent.EXTRA_CC, arrayListOf(url)); // 抄送人
+            intent.putExtra(Intent.EXTRA_SUBJECT, "这是邮件的主题部分"); // 主题
+            intent.putExtra(Intent.EXTRA_TEXT, "这是邮件的正文部分"); // 正文
+            context!!.startActivity(Intent.createChooser(intent, "请选择邮箱"));
+        }catch (e :Exception){
+
+        }
+
     }
 
     //联系人
@@ -118,14 +136,14 @@ object AutoTextViewUtil {
                     override fun onButtonsClick(position: Int, dialog: Dialog?) {
                         when (position) {
                             0 -> {
-                                AutoTextViewUtil.jumpPhone(context, phoneNumber)
+                                jumpPhone(context, phoneNumber)
                             }
                             1 -> {
-                                AutoTextViewUtil.copyText(context, phoneNumber)
+                                copyText(context, phoneNumber)
                                 Toast.makeText(context, "复制到剪切板", Toast.LENGTH_SHORT).show()
                             }
                             2 -> {
-                                AutoTextViewUtil.addToPhoneList(context, phoneNumber)
+                                addToPhoneList(context, phoneNumber)
                             }
                         }
                         dialog!!.dismiss()
@@ -133,9 +151,9 @@ object AutoTextViewUtil {
 
                 })
         } else if (schemeUrl.startsWith("mailto:")) {
-            Toast.makeText(context, "正在开发，敬请期待", Toast.LENGTH_SHORT).show()
+            openEmail(context!!, schemeUrl)
         } else if (schemeUrl.startsWith("http") || schemeUrl.startsWith("https")) {
-            AutoTextViewUtil.openBrowser(context!!, schemeUrl)
+            openBrowser(context!!, schemeUrl)
         }
     }
 

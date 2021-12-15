@@ -10,7 +10,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
     <RelativeLayout
-        android:visibility="gone"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/shape_10dp"
@@ -36,7 +36,7 @@
 
 
     <LinearLayout
-        android:visibility="gone"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
