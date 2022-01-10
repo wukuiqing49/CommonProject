@@ -25,6 +25,7 @@ object GreySkinUtil {
             colorMatrix.setSaturation(0f)
             val filter = ColorMatrixColorFilter(colorMatrix)
             paint.colorFilter = filter
+            //自定义相机和自定义扫码页面可能会出现与LAYER_TYPE_HARDWARE 冲突 建议给别页面置灰
             activity.window.decorView.setLayerType(View.LAYER_TYPE_HARDWARE, paint)
         }
     }
