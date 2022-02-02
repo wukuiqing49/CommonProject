@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import com.wu.base.util.AlertUtil
+import com.wu.base.util.SharedPreferencesHelper
 import com.wu.network.api.MallApi
 import com.wu.network.listener.DataCallback
 import com.wu.network.model.UserInfo
@@ -33,9 +35,15 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.bt_text).setOnClickListener {
             startActivity(Intent(this, TextViewActivity::class.java))
         }
+        findViewById<Button>(R.id.bt_text1).setOnClickListener {
+            var isGrey = SharedPreferencesHelper.getInstance(this).getBoolean("isGrey", false)
+            SharedPreferencesHelper.getInstance(this).setValue("isGrey", !isGrey)
+
+            AlertUtil.showDeftToast(this, "重启生效")
+        }
     }
 
-    fun net(){
+    fun net() {
         var map = HashMap<String, String>()
         map.put("name", "123")
         map.put("password", "456")
