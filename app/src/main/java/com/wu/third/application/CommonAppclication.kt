@@ -41,15 +41,12 @@ class CommonAppclication:MultiDexApplication(), ActivityLifecycleCallbacks {
     }
 
     override fun onActivityStopped(activity: Activity) {
-        TODO("Not yet implemented")
     }
 
     override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {
-        TODO("Not yet implemented")
     }
 
     override fun onActivityDestroyed(activity: Activity) {
-        TODO("Not yet implemented")
     }
 
 
