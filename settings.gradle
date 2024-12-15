@@ -1,3 +1,5 @@
 include ':lib_view'
 include ':app', ':lib_network',':lib_third'
 rootProject.name = "CommonProject"
+
+include ':lib_ui'

@@ -71,7 +71,7 @@ android {
     }
 
     buildFeatures {
-        dataBinding = true
+        viewBinding true
     }
 
 }
@@ -92,4 +92,5 @@ dependencies {
     api project(path: ':lib_network')
     implementation project(path: ':lib_view')
     implementation 'com.github.wukuiqing49:CommonProject:v1.0.4'
+    implementation project(':lib_ui')
 }

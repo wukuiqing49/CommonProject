@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.RecyclerView
 import com.wu.base.adapter.KtAdapter
@@ -34,13 +33,11 @@ class ClassificationTagAdapter(mContext: Context) : KtAdapter<ClassificationTagI
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        var binding = DataBindingUtil.inflate<LayoutClassficationTagBinding>(
-            LayoutInflater.from(mContext),
-            R.layout.layout_classfication_tag, parent, false
-        )
+        var binding = LayoutClassficationTagBinding.inflate(
+            LayoutInflater.from(mContext),parent,false)
 
         var holder = KtDataBindingViewHolder(binding.root)
-        holder.binding = binding
+
         return holder
     }
 
@@ -64,11 +61,11 @@ class ClassificationTagAdapter(mContext: Context) : KtAdapter<ClassificationTagI
                 if (!TextUtils.isEmpty(title)) {
                     binding.tvTag.text = title
                 }
-                if (isShow) {
-                    binding.rlRoot.setBackgroundColor(mContext.resources.getColor(R.color.color_23d41e))
-                } else {
-                    binding.rlRoot.setBackgroundColor(mContext.resources.getColor(R.color.white))
-                }
+//                if (isShow) {
+//                    binding.rlRoot.setBackgroundColor(mContext.resources.getColor(R.color.color_23d41e))
+//                } else {
+//                    binding.rlRoot.setBackgroundColor(mContext.resources.getColor(R.color.white))
+//                }
             }
         }
     }

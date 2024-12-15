@@ -7,30 +7,29 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/bt_share"
+            android:id="@+id/bt_Rv"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="20dp"
-            android:text="分享" />
+            android:text="RV" />
+        <Button
+            android:id="@+id/bt_indicator"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:text="指针" />
 
         <Button
-            android:id="@+id/bt_login"
+            android:id="@+id/bt_goods"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="20dp"
-            android:text="登录" />
-        <Button
-            android:id="@+id/bt_share_img"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="20dp"
-            android:text="分享图片" />
+            android:text="商品" />
 
         <Button
-            android:id="@+id/bt_pay"
+            android:id="@+id/bt_Tab"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="20dp"
-            android:text="支付" />
-
+            android:text="Tab" />
     </LinearLayout>

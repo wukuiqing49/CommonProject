@@ -1,10 +1,10 @@
 package com.wu.third
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
+import com.wkq.ui.UIActivity
 import com.wu.base.util.AlertUtil
 import com.wu.base.util.SharedPreferencesHelper
 import com.wu.network.api.MallApi
@@ -15,7 +15,7 @@ import com.wu.network.retrofit.convertExecute
 import com.wu.third.classification.ClassificationActivity
 import com.wu.third.net.NetActivity
 import com.wu.third.textview.TextViewActivity
-
+import com.wu.third.R
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +40,10 @@ class MainActivity : AppCompatActivity() {
             SharedPreferencesHelper.getInstance(this).setValue("isGrey", !isGrey)
 
             AlertUtil.showDeftToast(this, "重启生效")
+        }
+
+        findViewById<Button>(R.id.bt_UI).setOnClickListener {
+        UIActivity.startActivity(this)
         }
     }
 

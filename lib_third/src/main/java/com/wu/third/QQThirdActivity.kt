@@ -2,9 +2,8 @@ package com.wu.third
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
+import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
 import com.tencent.tauth.IUiListener
 import com.tencent.tauth.Tencent
 import com.tencent.tauth.UiError
@@ -31,7 +30,7 @@ class QQThirdActivity : AppCompatActivity(), IUiListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var binding = DataBindingUtil.setContentView<ActivityQqBinding>(this, R.layout.activity_qq)
+        var binding = ActivityQqBinding.inflate(LayoutInflater.from(this))
         mTencent = Tencent.createInstance("xxxx", this.getApplicationContext())
 
         binding.btLogin.setOnClickListener {

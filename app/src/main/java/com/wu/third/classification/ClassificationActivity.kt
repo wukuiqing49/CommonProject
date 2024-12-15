@@ -1,17 +1,14 @@
 package com.wu.third.classification
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.wu.base.adapter.KtAdapter
 import com.wu.third.R
 import com.wu.third.databinding.ActivityClassificationBinding
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class ClassificationActivity : AppCompatActivity(), Observer {
@@ -55,10 +52,8 @@ class ClassificationActivity : AppCompatActivity(), Observer {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView<ActivityClassificationBinding>(
-                this,
-                R.layout.activity_classification
-        )
+        binding = ActivityClassificationBinding.inflate(LayoutInflater.from(this))
+
         ClassificationObservable.addObserver(this)
         ClassificationFinshObservable.addObserver(this)
         initView()

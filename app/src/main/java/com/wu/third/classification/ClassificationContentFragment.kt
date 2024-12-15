@@ -55,10 +55,8 @@ class ClassificationContentFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate<FragmentClassificationContentBinding>(
-            layoutInflater,
-            R.layout.fragment_classification_content, container, false
-        )
+        binding = FragmentClassificationContentBinding.inflate(layoutInflater,container,false)
+
         return binding!!.root
     }
 

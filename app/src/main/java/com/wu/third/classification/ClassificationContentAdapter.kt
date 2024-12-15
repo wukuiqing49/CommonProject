@@ -25,12 +25,9 @@ class ClassificationContentAdapter(mContext: Context) :
     KtAdapter<ClassificationContentInfo>(mContext) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        var binding = DataBindingUtil.inflate<ItemClassificationContentBinding>(
-            LayoutInflater.from(mContext),
-            R.layout.item_classification_content, parent, false
-        )
+        var binding = ItemClassificationContentBinding.inflate(LayoutInflater.from(mContext),parent,false)
         var holder = KtDataBindingViewHolder(binding.root)
-        holder.binding = binding
+
         return holder
     }
     var binding:ItemClassificationContentBinding?=null

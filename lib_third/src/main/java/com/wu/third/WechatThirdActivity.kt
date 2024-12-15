@@ -2,18 +2,11 @@ package com.wu.third
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
+import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.Observable
-import com.tencent.tauth.IUiListener
 import com.tencent.tauth.Tencent
-import com.tencent.tauth.UiError
-import com.wu.third.R
-import com.wu.third.ThirdUtil
-import com.wu.third.databinding.ActivityQqBinding
 import com.wu.third.databinding.ActivityWechatBinding
-import java.util.*
+import java.util.Observer
 
 
 /**
@@ -32,8 +25,7 @@ class WechatThirdActivity : AppCompatActivity(), Observer {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var binding =
-            DataBindingUtil.setContentView<ActivityWechatBinding>(this, R.layout.activity_wechat)
+        var binding = ActivityWechatBinding.inflate(LayoutInflater.from(this))
         mTencent = Tencent.createInstance("xxxx", this.getApplicationContext())
 
         binding.btLogin.setOnClickListener {

@@ -2,6 +2,7 @@ package com.wu.third.net
 
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.wu.network.api.MallApi
@@ -27,7 +28,7 @@ class NetActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = DataBindingUtil.setContentView<ActivityNetBinding>(this, R.layout.activity_net)
+        binding = ActivityNetBinding.inflate(LayoutInflater.from(this))
         initView()
 
     }

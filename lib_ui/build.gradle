@@ -13,13 +13,14 @@ android {
         versionName rootProject.ext.versionName
     }
 
+
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
 
     compileOptions {
         sourceCompatibility 1.8
@@ -32,23 +33,11 @@ android {
 }
 
 dependencies {
+
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.1.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
-
-    //Retrofit
-    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofit"
-    implementation "com.squareup.retrofit2:converter-gson:$rootProject.converterGson"
-    implementation("com.squareup.retrofit2:adapter-rxjava2:$rootProject.adapterRxjava2") {
-        exclude module: 'rxjava'// rxJava
-    }
-
-    api "io.reactivex.rxjava2:rxjava:$rootProject.rxJava"
-    api "io.reactivex.rxjava2:rxandroid:$rootProject.rxAndroid"
-    //OKhttp
-    implementation "com.squareup.okhttp3:okhttp:$rootProject.okhttp"
-    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.loggingInterceptor"
-
-
+    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.github.hackware1993:MagicIndicator:1.6.0'
+    implementation "androidx.multidex:multidex:2.0.0"
 }

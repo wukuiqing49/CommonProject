@@ -32,13 +32,13 @@ class ClassificationImgsAdapter(mContext: Context):KtAdapter<String>(mContext) {
         return (ScreenUtils.getScreenWidth(mContext) -DeviceUtils.dip2px(mContext,100))/ 4
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        var binding=DataBindingUtil.inflate<ItemClassficationContentImgBinding>(LayoutInflater.from(mContext),
-            R.layout.item_classfication_content_img,parent,false)
+        var binding=ItemClassficationContentImgBinding.inflate(LayoutInflater.from(mContext),parent,false)
+
         var layout = RelativeLayout.LayoutParams(getHeight(), getHeight())
         layout.setMargins(5, 5, 5, 5)
         binding.root.layoutParams = layout
         var holder=KtDataBindingViewHolder(binding.root)
-        holder.binding=binding
+
         return  holder
     }
 
