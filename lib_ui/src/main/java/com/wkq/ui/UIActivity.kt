@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import com.wkq.ui.databinding.ActivityUiBinding
+import com.wkq.ui.goods.GoodsDetail2Activity
+import com.wkq.ui.goods.GoodsDetailActivity
 
 class UIActivity :AppCompatActivity (){
 
@@ -23,6 +25,9 @@ class UIActivity :AppCompatActivity (){
         setContentView(binding.root)
         binding.btIndicator.setOnClickListener {
             IndicatorActivity.startActivity(this)
+        }
+   binding.btGoods.setOnClickListener {
+       GoodsDetail2Activity.startActivity(this)
         }
 
     }

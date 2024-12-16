@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<com.scwang.smart.refresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.wkq.ui.view.DrawerContent
+        android:id="@+id/ml"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutDescription="@xml/scene_content"
+        tools:ignore="MotionLayoutInvalidSceneFileReference">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="false">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/app_bar"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:theme="@style/AppTheme.AppBarOverlay">
+
+                <com.wkq.ui.view.CollapsibleToolbar
+
+                    android:id="@+id/motionLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#1e376b"
+                    android:minHeight="0dp"
+                    app:layoutDescription="@xml/scene_header"
+                    app:layout_scrollFlags="scroll|enterAlways|snap|exitUntilCollapsed">
+
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/vp_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:scaleType="centerCrop"
+                        android:background="@drawable/death_valley" />
+
+
+                </com.wkq.ui.view.CollapsibleToolbar>
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never"
+                android:scrollbars="none"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+    </com.wkq.ui.view.DrawerContent>
+
+</com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+
+
+

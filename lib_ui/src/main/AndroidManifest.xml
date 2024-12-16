@@ -6,5 +6,7 @@
     <application>
         <activity android:name=".IndicatorActivity" />
         <activity android:name=".UIActivity" />
+        <activity android:name=".goods.GoodsDetailActivity" />
+        <activity android:name=".goods.GoodsDetail2Activity" />
     </application>
 </manifest>
